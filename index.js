@@ -5,7 +5,7 @@ const app = express()
 app.use('/places', require('./controllers/places'))
 
 app.get('/', (req, res) => {
-    res.send('Howdy world!')
+    res.send('Hello world!')
 })
 
 app.get('*', (req, res) => {
