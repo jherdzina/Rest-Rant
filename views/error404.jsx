@@ -9,7 +9,7 @@ function error404 () {
               <div>
                 <img src="/images/Ebs-404.png" width={350} height={450} alt="Most adorable doggo with tortilla on her head"/>
               </div>
-              <p>Oops, sorry, we can't find this page!</p>
+              <p>Omg, there's a tortilla on my head!!!</p>
           </main>
       </Def>
     )
