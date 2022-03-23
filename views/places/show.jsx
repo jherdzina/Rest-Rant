@@ -9,11 +9,19 @@ function show (data) {
                 <h1>{ data.place.name }</h1>
                 <p>
                 <img src={data.place.pic} width={250} height={250} alt={data.place.name}/>
+                <h3>
+                    Located in {data.place.city}, {data.place.state}
+                </h3>
                 </p>
                 <h2>Rating</h2>
                 <p>No Rating</p>
                 <h2>Description</h2>
-                <p>Located in {data.place.city}, {data.place.state} and serving {data.place.cuisines}</p>
+                <h3>
+                    {data.place.showEstablished()}
+                </h3>
+                <h4>
+                    Serving {data.place.cuisines}
+                </h4>
                 <h2>Comments</h2>
                 <p>No Comments Yet</p>
             </div>
