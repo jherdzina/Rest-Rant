@@ -1,6 +1,7 @@
 const React = require('react')
 const Def = require('../default')
 
+
 function show (data) {
     let comments = (
         <h3 className="inactive">
@@ -20,7 +21,6 @@ function show (data) {
                 </div>
             )
         })
-        //return comments;
     }
     return (
         <Def>
@@ -45,13 +45,35 @@ function show (data) {
                 <h2>Comments</h2>
                 { comments }
             </div>
+            <form method="POST" action={`/places/${JSON.stringify(data.id)}/comment?_method=CREATE`}>
+                <div>
+                    <label htmlFor="name">Author</label>
+                    <input type="text" className="form-control" id="author" name="author" required />
+                </div>
+                <div>
+                    <label htmlFor="name">Content</label>
+                    <input type="textarea" className="form-control" id="content" name="content" />
+                </div>
+                <div>
+                    <label htmlFor="name">Star Rating</label>
+                    <input type="number" min="0" max="5" step="0.5" className="form-control" id="stars" name="stars" />
+                </div>
+                <div>
+                    <label htmlFor="name">Rant</label>
+                    <input type="checkbox" id="rant" name="rant" />
+                </div>
+                <button type="submit" className="btn btn-comment">
+                    Post Comment
+                </button>
+                
+            </form>
             <a href={`/places/${data.id}/edit`} className="btn btn-warning"> 
                 Edit
             </a>
             <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
                 <button type="submit" className="btn btn-danger">
                     Delete
-                </button>
+                </button>  
             </form>
           </main>
           
