@@ -8,7 +8,21 @@ function show (data) {
             No comments yet!
         </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+            Not yet rated
+        </h3>
+    )
     if (data.place.comments.length>0) {
+        let sumRatings = data.place.comments.reduce((tot,c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / data.place.comments.length
+        rating = (
+            <h3>
+                { Math.round(averageRating) } stars
+            </h3>
+        )
         comments = data.place.comments.map(c => {
             return (
                 <div className="border">
@@ -33,8 +47,11 @@ function show (data) {
                     Located in {data.place.city}, {data.place.state}
                 </h3>
                 </p>
-                <h2>Rating</h2>
-                <p>No Rating</p>
+                <h2>
+                    Rating
+                </h2>
+                { rating }
+                <br/>
                 <h2>Description</h2>
                 <h3>
                     {data.place.showEstablished()}
@@ -44,6 +61,7 @@ function show (data) {
                 </h4>
                 <h2>Comments</h2>
                 { comments }
+                <br/>
             </div>
             <form method="POST" action={`/places/${JSON.stringify(data.id)}/comment?_method=CREATE`}>
                 <div>
