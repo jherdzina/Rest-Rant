@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  pic: { type: String, default: 'http://placekitten.com/350/350'},
+  pic: { type: String, default: '/images/eggy-toast.jpg'}, //Photo by <a href="https://unsplash.com/@benkolde?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ben Kolde</a> on <a href="https://unsplash.com/s/photos/breakfast-food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
   cuisines: { type: String, required: true },
   city: { type: String, default: 'Anytown' },
   state: { type: String, default: 'USA' },
