@@ -3,6 +3,7 @@ const Def = require('../default')
 
 
 function show (data) {
+    let image = (data.place.pic.match(/^images/)) ? `../${data.place.pic}` : data.place.pic
     let comments = (
         <h3 className="inactive">
             No comments yet!
@@ -45,12 +46,12 @@ function show (data) {
           <main>
             <div>
                 <h1>{ data.place.name }</h1>
-                <p>
-                <img src={data.place.pic} width={250} height={250} alt={data.place.name}/>
+                <div>
+                <img src={ image } width={250} height={250} alt={data.place.name}/>
                 <h3>
                     Located in {data.place.city}, {data.place.state}
                 </h3>
-                </p>
+                </div>
                 <h2>
                     Rating
                 </h2>
@@ -67,7 +68,7 @@ function show (data) {
                 { comments }
                 <br/>
             </div>
-            <form method="POST" action={`/places/${JSON.stringify(data.id)}/comment?_method=CREATE`}>
+            <form method="POST" action={`/places/${data.place.id}/comment?_method=CREATE`}>
                 <div>
                     <label htmlFor="name">Author</label>
                     <input type="text" className="form-control" id="author" name="author" required />
@@ -82,17 +83,17 @@ function show (data) {
                 </div>
                 <div>
                     <label htmlFor="name">Rant</label>
-                    <input type="checkbox" id="rant" name="rant" />
+                    <input type="checkbox" className="rant" name="rant" />
                 </div>
                 <button type="submit" className="btn btn-secondary">
                     Post Comment
                 </button>
                 
             </form>
-            <a href={`/places/${data.id}/edit`} className="btn btn-warning"> 
+            <a href={`/places/${data.place.id}/edit`} className="btn btn-warning"> 
                 Edit
             </a>
-            <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
+            <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}>
                 <button type="submit" className="btn btn-danger">
                     Delete
                 </button>  
